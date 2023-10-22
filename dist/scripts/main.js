@@ -12,23 +12,13 @@ const main = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         displayModal();
         const fetchQuestions = yield getQuestions(pathJson);
-        console.log("fetch questions", fetchQuestions);
-        // const questions: Question[] = fetchQuestions.map((data: any) => {            
-        //     return new Question(data.number, data.question, data.options, data.solution);
-        // });
-        // const questions: Question[] = fetchQuestions.map((data: Question) => {
-        //     return new Question(data.number, data.question, data.options, data.solution);
-        // });
         const questions = parseQuestions(fetchQuestions);
-        console.log("questions modélisées en objet", questions);
         quiz(questions);
     }
     catch (erreur) {
         console.log(erreur);
     }
 });
-const pathJson = "./../datas/questions.json";
-const startButton = document.querySelector(".start_btn");
 if (startButton) {
     startButton.addEventListener('click', () => {
         // console.log("Mon super click dans la console !");

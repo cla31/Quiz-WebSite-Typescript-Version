@@ -12,7 +12,7 @@ class Question {
     display() {
         const que_text = document.querySelector(".quiz-box__question-text");
         if (que_text) {
-            console.log("*****Que Text", que_text);
+            // console.log("*****Que Text",que_text);            
             que_text.innerHTML = `<span>${this.number}. ${this.question}</span>`;
         }
         if (this.option_list) {
