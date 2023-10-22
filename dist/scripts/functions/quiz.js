@@ -114,7 +114,6 @@ const quiz = (questions) => {
             }
             else {
                 console.error("timerElement is null");
-                // Gérer le cas où timerElement n'est pas défini, par exemple, en lançant une exception ou en effectuant une autre action appropriée.
             }
         }, 1000);
     };

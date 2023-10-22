@@ -6,8 +6,8 @@ const main = async (pathJson: string) => {
         const questions: Question[] = parseQuestions(fetchQuestions);
         quiz(questions)
       
-    } catch (erreur) {
-        console.log(erreur);
+    } catch (error) {
+        console.log(error);
     }
 };
 
@@ -15,7 +15,6 @@ const main = async (pathJson: string) => {
 
 if (startButton) {
     startButton.addEventListener('click', () => {
-        // console.log("Mon super click dans la console !");
         main(pathJson);
     });
 }

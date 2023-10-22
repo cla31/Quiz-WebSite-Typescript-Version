@@ -15,13 +15,12 @@ const main = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
         const questions = parseQuestions(fetchQuestions);
         quiz(questions);
     }
-    catch (erreur) {
-        console.log(erreur);
+    catch (error) {
+        console.log(error);
     }
 });
 if (startButton) {
     startButton.addEventListener('click', () => {
-        // console.log("Mon super click dans la console !");
         main(pathJson);
     });
 }
