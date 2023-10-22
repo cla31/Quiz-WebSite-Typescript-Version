@@ -1,0 +1,200 @@
+const quiz = (questions: Question[]) => {
+
+    console.log("Fonction quiz activée");    
+    initializeDomElements();
+    initializeVariables();
+    console.log("info box",infoBox);
+ 
+    if (infoBox) {
+        infoBox.classList.add("info-box--active");
+        if (modalElement) {
+            modalElement.style.display = 'block';
+        } else {
+            console.error("Element with ID 'modal' not found");
+        }
+        console.log("info box", infoBox);
+    } else {
+        console.error("infoBox is null");
+    }
+    
+
+    // Exit button
+    const exitQuiz = (event: Event) => {
+        const modal = document.getElementById('modal');
+        if (modal) {
+            modal.style.display = 'none';
+        } else {
+            console.error("Element 'modal' not found");
+        }
+    }
+    
+
+    // Hide info
+    const hideInfoBox = () => {
+        if (infoBox) {
+            infoBox.classList.remove("info-box--active");
+        }
+    }
+
+    // Continue button
+    const startQuiz = (event: Event) => {
+        if (quizBox) {
+            console.log("quizBox",quizBox);        
+            hideInfoBox();
+            quizBox.classList.add("quiz-box--active");
+            console.log("quizBox",quizBox);   
+            startTimer(timerDuration);
+        }
+    }
+    
+
+
+    // Quit quiz button
+    const quitQuiz = (event: Event) => {
+        window.location.reload();
+    }
+
+    // Replay button
+    const restartQuiz = (event: Event) => {
+        if (quizBox && resultBox && progressBar) {
+            quizBox.classList.add("quiz-box--active");
+            resultBox.classList.remove("result-box--active");
+            shuffleArray(questions);
+            queCount = 0;
+            totalScore = 0;
+            questionsDisplayed = 0;
+            progressBar.style.width = "0%";
+            questions[queCount].userHasSelected = false;
+            questions[queCount].display();
+            startTimer(timerDuration);
+        } else {
+            console.error("Some elements are null");
+        }
+    }
+    
+
+    // NextQuestion(), handleTimeout()
+    const updateProgressBar = () => {
+        if (progressBar) {
+            const progressPercentage = (questionsDisplayed / 10) * 100;
+            progressBar.style.width = progressPercentage + "%";
+        }
+    }
+    
+
+    // Next button
+    const nextQuestion = (timerDuration: number) => {
+        if (timerId) {
+            clearInterval(timerId);
+        }
+    
+        if (questions[queCount].userHasSelected) {
+            queCount++;
+            questionsDisplayed++;
+    
+            if (queCount < 10) {
+                questions[queCount].display();
+                startTimer(timerDuration);
+            } else {
+                showResultBox();
+            }
+    
+            updateProgressBar();
+        } else {
+            alert("Vous devez sélectionner une réponse avant de passer à la question suivante.");
+            startTimer(timeLeftInTimer);
+        }
+    
+        questions[queCount].userHasSelected = false;
+    };
+    
+
+    // StartQuiz(), NextQuestion, restartQuiz()
+    const startTimer = (timerDuration: number) => {
+        let timeLeft = timerDuration;
+        // Intervalle
+        timerId = setInterval(() => {
+            if (timerElement) {
+                if (timeLeft <= -1) {
+                    clearInterval(timerId);
+                    timerElement.textContent = "0 s";
+                    handleTimeout();
+                } else {
+                    timerElement.textContent = `${timeLeft} s`;
+                    timeLeft--;
+                    timeLeftInTimer = timeLeft;
+                }
+            } else {
+                console.error("timerElement is null");
+                // Gérer le cas où timerElement n'est pas défini, par exemple, en lançant une exception ou en effectuant une autre action appropriée.
+            }
+        }, 1000);
+    }
+    
+
+    // Lorsque le temps s'est écoulé pour une question donnée.
+    const handleTimeout = () => {
+        // Si l'utilisateur n'a pas sélectionné de réponse
+        if (!questions[queCount].userHasSelected) {
+            questionsDisplayed++;
+            alert("Temps écoulé, pas de points.");
+            // On passe à la question suivante
+            queCount++;
+            updateProgressBar();
+        }
+        // S'il y a encore des questions à afficher, elle affiche la question suivante
+        if (queCount < 10) {
+            questions[queCount].display();
+            // démarre une nouvelle minuterie.
+            startTimer(timerDuration);
+        } else {
+            showResultBox();
+        }
+    }
+
+    const showResultBox = () => {
+        if (infoBox && quizBox && resultBox) {
+            infoBox.classList.remove("info-box--active");
+            quizBox.classList.remove("quiz-box--active");
+            resultBox.classList.add("result-box--active");
+            
+            // Pour s'assurer que scoreText est correctement initialisé en utilisant querySelector
+            const scoreText = resultBox.querySelector(".result-box__score-text");
+    
+            if (scoreText) {
+                let scoreMessage = '';
+    
+                if (totalScore > 3) {
+                    scoreMessage = `Congrats!, You got ${totalScore} out of 10`;
+                } else if (totalScore > 1) {
+                    scoreMessage = `and nice 😎, You got ${totalScore} out of 10`;
+                } else {
+                    scoreMessage = `and sorry 😐, You got only ${totalScore} out of 10`;
+                }
+    
+                scoreText.innerHTML = `<span>${scoreMessage}</span>`;
+            } else {
+                console.error("scoreText is null");
+            }
+        } else {
+            console.error("infoBox, quizBox, or resultBox is null");
+        }
+    }
+
+
+    if (exitBtn && continueBtn && nextBtn && restartButton && quitButton) {
+        exitBtn.addEventListener('click', exitQuiz);
+        continueBtn.addEventListener('click', startQuiz);
+        nextBtn.addEventListener('click', (event: MouseEvent) => {
+            // nextQuestion en passant le paramètre timerDuration
+            nextQuestion(10);
+        });
+        restartButton.addEventListener('click', restartQuiz);
+        quitButton.addEventListener('click', quitQuiz);
+    }
+
+    // Initialisation
+    shuffleArray(questions);
+    console.log("question queCount", questions[queCount]);
+    questions[queCount].display();
+};
