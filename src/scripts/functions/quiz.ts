@@ -133,18 +133,17 @@ const quiz = (questions: Question[]) => {
 
     // Lorsque le temps s'est écoulé pour une question donnée.
     const handleTimeout = () => {
-        // Si l'utilisateur n'a pas sélectionné de réponse
-        if (!questions[queCount].userHasSelected) {
-            questionsDisplayed++;
+        //Si l'utilisateur n'a pas séléctionné de réponse et
+        //S'il y a encore des questions à afficher, elle affiche la question suivante
+        if ((!questions[queCount].userHasSelected)&&(queCount < 10)) {
             alert("Temps écoulé, pas de points.");
-            // On passe à la question suivante
             queCount++;
+            questionsDisplayed++;
             updateProgressBar();
-        }
-        // S'il y a encore des questions à afficher, elle affiche la question suivante
-        if (queCount < 10) {
             questions[queCount].display();
-            // démarre une nouvelle minuterie.
+            console.log("If handleTimeout questionCount",queCount);
+            console.log("If handleTimeout questionDisplayed",questionsDisplayed);
+            //démarre une nouvelle minuterie.
             startTimer(timerDuration);
         } else {
             showResultBox();
@@ -163,12 +162,16 @@ const quiz = (questions: Question[]) => {
             if (scoreText) {
                 let scoreMessage = '';
     
-                if (totalScore > 3) {
-                    scoreMessage = `Congrats!, You got ${totalScore} out of 10`;
-                } else if (totalScore > 1) {
-                    scoreMessage = `and nice 😎, You got ${totalScore} out of 10`;
+                if (totalScore === 10) {
+                    scoreMessage = `Congrats, 10/10!! 👍 🥳, well done!! 💪`;
                 } else {
-                    scoreMessage = `and sorry 😐, You got only ${totalScore} out of 10`;
+                    if (totalScore > 5) {
+                        scoreMessage = `Congrats!, You got ${totalScore} out of 10`;
+                    } else if (totalScore > 2) {
+                        scoreMessage = `and nice 😎, You got ${totalScore} out of 10`;
+                    } else {
+                        scoreMessage = `and sorry 😐, You got only ${totalScore} out of 10`;
+                    }
                 }
     
                 scoreText.innerHTML = `<span>${scoreMessage}</span>`;
