@@ -22,7 +22,7 @@ const startButton = document.querySelector(".start_btn");
 const initializeVariables = () => {
     queCount = 0;
     questionsDisplayed = 0;
-    timerDuration = 5;
+    timerDuration = 10;
     timerId = undefined;
     timeLeftInTimer = 0;
     totalScore = 0;

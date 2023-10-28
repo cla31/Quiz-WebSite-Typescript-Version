@@ -131,22 +131,21 @@ const quiz = (questions: Question[]) => {
     }
     
 
-    // Lorsque le temps s'est écoulé pour une question donnée.
-    const handleTimeout = () => {
-        //Si l'utilisateur n'a pas séléctionné de réponse et
-        //S'il y a encore des questions à afficher, elle affiche la question suivante
-        if ((!questions[queCount].userHasSelected)&&(queCount < 10)) {
+     // Lorsque le temps s'est écoulé pour une question donnée.
+     const handleTimeout = () => {
+        // Si l'utilisateur n'a pas sélectionné de réponse et
+        // s'il n'y a plus de questions à afficher, entre dans le "else"
+        if (!(questions[queCount].userHasSelected) && (queCount === 10)) {
+            showResultBox();
+        } else {
+            // Si les deux conditions ne sont pas remplies, entre dans le "if"
             alert("Temps écoulé, pas de points.");
             queCount++;
             questionsDisplayed++;
             updateProgressBar();
             questions[queCount].display();
-            console.log("If handleTimeout questionCount",queCount);
-            console.log("If handleTimeout questionDisplayed",questionsDisplayed);
-            //démarre une nouvelle minuterie.
+            // Démarre une nouvelle minuterie.
             startTimer(timerDuration);
-        } else {
-            showResultBox();
         }
     }
 
