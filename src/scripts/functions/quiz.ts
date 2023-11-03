@@ -19,7 +19,7 @@ const quiz = (questions: Question[]) => {
     
 
     // Exit button
-    const exitQuiz = (event: Event) => {
+    const onExitQuizButtonClicked = (event: Event) => {
         const modal = document.getElementById('modal');
         if (modal) {
             modal.style.display = 'none';
@@ -184,7 +184,7 @@ const quiz = (questions: Question[]) => {
 
 
     if (exitBtn && continueBtn && nextBtn && restartButton && quitButton) {
-        exitBtn.addEventListener('click', exitQuiz);
+        exitBtn.addEventListener('click', onExitQuizButtonClicked);
         continueBtn.addEventListener('click', startQuiz);
         nextBtn.addEventListener('click', (event: MouseEvent) => {
             // nextQuestion en passant le paramètre timerDuration
