@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "build": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1",
         "sass": "sass --watch ./dist/styles/sass/main.scss:./dist/public/css/style.css"
     },
