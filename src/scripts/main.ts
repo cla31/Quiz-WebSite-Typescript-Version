@@ -3,7 +3,8 @@ const main = async (pathJson: string) => {
     try {  
         const fetchQuestions = await fetchQuestionsFromJson(pathJson);
         const questions: Question[] = parseQuestions(fetchQuestions);
-        const user = new User();        
+        const user = new User();
+        runQuiz(questions, user);        
     } catch (error) {
         console.log(error);
     }

@@ -13,6 +13,7 @@ const main = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
         const fetchQuestions = yield fetchQuestionsFromJson(pathJson);
         const questions = parseQuestions(fetchQuestions);
         const user = new User();
+        runQuiz(questions, user);
     }
     catch (error) {
         console.log(error);
