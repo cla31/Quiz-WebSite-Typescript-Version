@@ -18,7 +18,7 @@ const quiz = (questions) => {
         console.error("infoBox is null");
     }
     // Exit button
-    const exitQuiz = (event) => {
+    const onExitQuizButtonClicked = (event) => {
         const modal = document.getElementById('modal');
         if (modal) {
             modal.style.display = 'none';
@@ -169,7 +169,7 @@ const quiz = (questions) => {
         }
     };
     if (exitBtn && continueBtn && nextBtn && restartButton && quitButton) {
-        exitBtn.addEventListener('click', exitQuiz);
+        exitBtn.addEventListener('click', onExitQuizButtonClicked);
         continueBtn.addEventListener('click', startQuiz);
         nextBtn.addEventListener('click', (event) => {
             // nextQuestion en passant le paramètre timerDuration
