@@ -10,10 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const main = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        displayModal();
         const fetchQuestions = yield fetchQuestionsFromJson(pathJson);
         const questions = parseQuestions(fetchQuestions);
-        quiz(questions);
+        const user = new User();
     }
     catch (error) {
         console.log(error);

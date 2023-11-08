@@ -1,4 +1,4 @@
-const displayModal = () => {  
+const displayModal = (modal: HTMLElement): void  => {  
     if (modal) {
         modal.innerHTML = `
         <!-- <div class="info-box"> -->
@@ -59,5 +59,8 @@ const displayModal = () => {
                 <button class="result-box__button--quit">Quit Quiz</button>
             </div>
         </div>`;
+    }else{
+        console.log("Pas de modal");
+        
     }
 };

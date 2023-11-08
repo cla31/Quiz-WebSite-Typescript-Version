@@ -1,11 +1,9 @@
 
 const main = async (pathJson: string) => {
     try {  
-        displayModal();
         const fetchQuestions = await fetchQuestionsFromJson(pathJson);
         const questions: Question[] = parseQuestions(fetchQuestions);
-        quiz(questions)
-      
+        const user = new User();        
     } catch (error) {
         console.log(error);
     }
