@@ -18,6 +18,7 @@ let quitButton;
 let scoreText;
 let modalElement;
 const pathJson = "./../datas/questions.json";
+const modal = document.getElementById("modal");
 const startButton = document.querySelector(".start_btn");
 const initializeVariables = () => {
     queCount = 0;

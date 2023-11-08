@@ -19,6 +19,7 @@ let scoreText: HTMLElement | null;
 let modalElement: HTMLElement | null;
 
 const pathJson: string = "./../datas/questions.json";
+const modal = document.getElementById("modal") as HTMLElement | null;
 const startButton = document.querySelector(".start_btn") as HTMLElement | null;
 
 const initializeVariables = () => {    

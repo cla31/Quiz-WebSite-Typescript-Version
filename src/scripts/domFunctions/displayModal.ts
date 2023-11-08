@@ -1,5 +1,4 @@
 const displayModal = () => {  
-    const modal = document.getElementById("modal"); 
     if (modal) {
         modal.innerHTML = `
         <!-- <div class="info-box"> -->

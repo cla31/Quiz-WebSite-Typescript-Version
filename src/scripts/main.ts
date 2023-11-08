@@ -11,8 +11,6 @@ const main = async (pathJson: string) => {
     }
 };
 
-
-
 if (startButton) {
     startButton.addEventListener('click', () => {
         main(pathJson);
