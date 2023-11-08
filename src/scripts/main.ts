@@ -2,7 +2,7 @@
 const main = async (pathJson: string) => {
     try {  
         displayModal();
-        const fetchQuestions = await getQuestions(pathJson);
+        const fetchQuestions = await fetchQuestionsFromJson(pathJson);
         const questions: Question[] = parseQuestions(fetchQuestions);
         quiz(questions)
       

@@ -8,19 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const main = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
+const fetchQuestionsFromJson = (pathJson) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        displayModal();
-        const fetchQuestions = yield fetchQuestionsFromJson(pathJson);
-        const questions = parseQuestions(fetchQuestions);
-        quiz(questions);
+        const response = yield fetch(pathJson);
+        const jsonData = yield response.json();
+        return jsonData;
     }
-    catch (error) {
-        console.log(error);
+    catch (erreur) {
+        console.log(erreur);
+        return []; // Tableau vide en cas d'erreur
     }
 });
-if (startButton) {
-    startButton.addEventListener('click', () => {
-        main(pathJson);
-    });
-}
