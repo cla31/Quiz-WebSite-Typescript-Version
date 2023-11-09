@@ -6,4 +6,4 @@
 **Application Diagram:**
 <br/>
 <br/>
-![DESKTOP-VERSION](./Quiz_website_typescript_version.drawio.png)
+![DESKTOP-VERSION](./diagramme.png)
