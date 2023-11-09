@@ -23,7 +23,7 @@ const initializeDomElements = () => {
     resultBox = document.querySelector(".result-box");
     progressBar = document.querySelector(".quiz-box__progress");
     timerElement = document.querySelector(".quiz-box__timer-sec");
-    restartButton = resultBox;
-    quitButton = resultBox;
-    scoreText = resultBox;
+    restartButton = resultBox.querySelector(".result-box__buttons .result-box__button--restart");
+    quitButton = resultBox.querySelector(".result-box__button--quit");
+    scoreText = resultBox.querySelector(".result-box__score-text");
 };

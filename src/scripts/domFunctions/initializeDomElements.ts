@@ -25,9 +25,9 @@ const initializeDomElements = () => {
     resultBox = document.querySelector(".result-box") as HTMLElement ;
     progressBar = document.querySelector(".quiz-box__progress") as HTMLElement ;
     timerElement = document.querySelector(".quiz-box__timer-sec") as HTMLElement ;
-    restartButton = resultBox  as HTMLElement;
-    quitButton = resultBox  as HTMLElement;
-    scoreText = resultBox  as HTMLElement;
+    restartButton = resultBox.querySelector(".result-box__buttons .result-box__button--restart")  as HTMLElement;
+    quitButton = resultBox.querySelector(".result-box__button--quit")  as HTMLElement;
+    scoreText = resultBox.querySelector(".result-box__score-text")  as HTMLElement;
 };
 
 
