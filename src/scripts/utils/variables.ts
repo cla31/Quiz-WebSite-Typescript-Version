@@ -1,4 +1,4 @@
-let queCount: number;
+let questionCount: number;
 let questionsDisplayed: number;
 let timerDuration: number;
 let timerId: number | undefined;
@@ -10,7 +10,7 @@ const modal = document.getElementById("modal") as HTMLElement;
 const startButton = document.querySelector(".start_btn") as HTMLElement | null;
 
 const initializeVariables = () => {    
-    queCount = 0;
+    questionCount = 0;
     questionsDisplayed = 0;
     timerDuration = 10;
     timerId = undefined;

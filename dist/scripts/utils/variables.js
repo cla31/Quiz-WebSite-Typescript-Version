@@ -1,5 +1,5 @@
 "use strict";
-let queCount;
+let questionCount;
 let questionsDisplayed;
 let timerDuration;
 let timerId;
@@ -9,7 +9,7 @@ const pathJson = "./../datas/questions.json";
 const modal = document.getElementById("modal");
 const startButton = document.querySelector(".start_btn");
 const initializeVariables = () => {
-    queCount = 0;
+    questionCount = 0;
     questionsDisplayed = 0;
     timerDuration = 10;
     timerId = undefined;

@@ -23,7 +23,10 @@ const initializeDomElements = () => {
     resultBox = document.querySelector(".result-box");
     progressBar = document.querySelector(".quiz-box__progress");
     timerElement = document.querySelector(".quiz-box__timer-sec");
-    restartButton = resultBox ? resultBox.querySelector(".result-box__buttons .result-box__button--restart") : null;
-    quitButton = resultBox ? resultBox.querySelector(".result-box__buttons .result-box__button--quit") : null;
-    scoreText = resultBox ? resultBox.querySelector(".result-box__score-text") : null;
+    // restartButton = resultBox ? resultBox.querySelector(".result-box__buttons .result-box__button--restart") : null;
+    // quitButton = resultBox ? resultBox.querySelector(".result-box__buttons .result-box__button--quit") : null;
+    // scoreText = resultBox ? resultBox.querySelector(".result-box__score-text") : null;
+    restartButton = resultBox;
+    quitButton = resultBox;
+    scoreText = resultBox;
 };
