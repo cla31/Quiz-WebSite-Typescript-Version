@@ -7,7 +7,7 @@ let totalScore: number;
 
 const pathJson: string = "./../datas/questions.json";
 const modal = document.getElementById("modal") as HTMLElement;
-const startButton = document.querySelector(".start_btn") as HTMLElement | null;
+// const startButton = document.querySelector(".start_btn") as HTMLElement | null;
 
 const initializeVariables = () => {    
     questionCount = 0;

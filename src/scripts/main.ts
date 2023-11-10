@@ -10,6 +10,8 @@ const main = async (pathJson: string) => {
     }
 };
 
+const startButton = document.querySelector(".start_btn") as HTMLElement | null;
+
 if (startButton) {
     startButton.addEventListener('click', () => {
         main(pathJson);
